@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>0rinoco |Votre panier</title>
+    <meta name="description" content="Ce panier récapitule les produits que vous avez acheté sur notre site Orinoco">
+    <meta name="robots" content="index, follow">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../favicon.ico" />
+
+    <script src="https://kit.fontawesome.com/e1e907064b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+        <div class="container-fluid mx-2 mx-lg-5">
+            <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="../back-end/images/logo.png" alt="logo orinoco" />
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-4 " id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" title="Page d'accueil" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./panier.html" title="Votre panier" id="basketPreview">Panier</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main id="product">
+        <div class="p-5 mx-5 mt-4 rounded bg-secondary">
+            <h1 class="text-center fs-2 text-light">Orinoco</h1>
+            <h2 class="text-center text-light">Récapitulatif de votre panier</h2>
+        </div>
+        <section class="my-3 mx-5" id="formulaire">
+            <h2 class="my-5 fs-5">Merci de remplir ce formulaire pour passer votre commande, tous les champs sont obligatoires</h2>
+            <form class="row g-3" id="validation-formulaire">
+                <div class="col-md-4">
+                    <label for="validationDefault01" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Ex: 'jean'" pattern="^[A-Z][A-Za-z\é\è\ê\-]+$" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefault02" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Ex: 'dupont'" pattern="^[A-Z][A-Za-z\é\è\ê\-]+$" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefaultUsername" class="form-label">Email</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" class="form-control" id="email" placeholder="Ex: 'jeandupont@mail.fr'" aria-describedby="inputGroupPrepend" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationDefault03" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="address" placeholder="Ex: '1 avenue de paris'" pattern="^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationDefault04" class="form-label">Ville</label>
+                    <input type="text" class="form-control" id="city" placeholder="Ex: 'eaubonne'" pattern="^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){1,10}$" required>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                        <label class="form-check-label" for="invalidCheck2">
+                             Accepter les termes et conditions de vente
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-secondary" type="submit" id="commande">Passer la commande</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer class="bg-light py-4">
+        <ul class="list-inline text-center">
+            <li class="list-inline-item"><a href="index.html" title="Page d'accueil">Accueil</a></li>
+            <li class="list-inline-item"><a href="mailto:orinoco@mail.com" title="Contact">Contact</a>
+            </li>
+            <li class="list-inline-item"><a href="#" title="Mentions Légales">Mentions Légales</a></li>
+        </ul>
+        <p class="copyright text-center">Orinoco © 2021</p>
+    </footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+
+</html>
