@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Orinoco | Oursons à personnaliser</title>
+
+    <meta name="description" content="Orinoco est un site de vente en ligne d'oursons faits à la main et personnalisables.">
+    <meta name="robots" content="index, follow">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../favicon.ico" />
+
+    <script src="https://kit.fontawesome.com/e1e907064b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+        <div class="container-fluid mx-2 mx-lg-5">
+            <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="../back-end/images/logo.png" alt="logo orinoco" />
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-4 " id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./panier.html" id="basketPreview">Panier</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="mx-3 my-5">
+            <div class="card px-0 mx-3 my-4 border-0">
+                <div class="row g-0 shadow p-3 " id="product">
+                    <div class="col-md-7" id="imageProduct">
+                        <!-- Insertion de l'image -->
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6 col-sm-7 mt-3" id="nameProduct">
+                                    <!-- Insertion du nom du produit -->nom
+                                </div>
+                                <div class="col-6 col-sm-5 text-end mt-3" id="priceProduct">
+                                    <!-- Insertion du prix du produit -->prix
+                                </div>
+                            </div>
+                            <div class="mb-3" id="descriptionProduct">
+                                <!-- Insertion de la description du produit -->description
+                            </div>
+                            <div class="row">
+                                <div class="col-5 col-sm-3 col-md-5 col-lg-4 col-xl-3 my-auto">
+                                    <p>Couleur :</p>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md-4 col-lg-6 ">
+                                    <select id="color" class="form-select mb-3" aria-label="choisir la couleur">
+                            </select></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-5 col-sm-3 col-md-5 col-lg-4 col-xl-3 my-auto">
+                                    <p>Quantité :</p>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md-4 col-lg-3 ">
+                                    <select id="quantity" class="form-select mb-3" aria-label="Quantité">
+                                        <option selected value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="btnAddBasket" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myModal">Ajouter au panier</button>
+                        </div>
+                        <div class="toast show position-absolute top-50 start-50 translate-middle bg-danger" id="myToast" hidden>
+                            <div id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex my-2">
+                                    <div class="toast-body me-auto py-0 text-white" id="message">
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2" data-bs-dismiss="toast" aria-label="Close" id="closeToast"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-light py-4">
+        <ul class="list-inline text-center">
+            <li class="list-inline-item"><a href="index.html" title="Accueil">Accueil</a></li>
+            <li class="list-inline-item"><a href="mailto:orinoco@mail.com?subject=Contact" title="Contact">Contact</a>
+            </li>
+            <li class="list-inline-item"><a href="#" title="Mentions Légales">Mentions Légales</a></li>
+        </ul>
+        <p class="copyright text-center">Orinoco © 2021</p>
+    </footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="./produit.js"></script>
+</body>
+
+</html>
