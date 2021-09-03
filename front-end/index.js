@@ -22,10 +22,10 @@ function addCards(data) {
                       <h5 class="card-title">${produit.name}</h5>
                   </div>
                   <div class="col-6 col-sm-5 text-end mt-3">
-                      <h5 class="card-title">${produit.price}</h5>
+                      <h5 class="card-title">${produit.price}€</h5>
                   </div>
               </div>
-              <p class="card-text text-truncate">${produit.description}</p>
+              <!--  <p class="card-text text-truncate">${produit.description}</p> -->
               <a href="./produit.html?_id=${produit._id}" class="btn btn-secondary">Acheter ce produit</a>
           </div>
       </div>
