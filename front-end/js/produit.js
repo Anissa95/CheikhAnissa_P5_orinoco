@@ -18,9 +18,9 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
             const selectionProductImage = document.getElementById("imageProduct");
             selectionProductImage.innerHTML += `<img src="${product.imageUrl}" class="img-fluid img-thumbnail" alt="${product.name}">`;
             const selectionProductName = document.getElementById("nameProduct");
-            selectionProductName.innerHTML += `<h5 class="card-title">${product.name}</h5>`;
+            selectionProductName.innerHTML += `<h2 class="card-title">${product.name}</h2>`;
             const selectionProductPrice = document.getElementById("priceProduct");
-            selectionProductPrice.innerHTML += `<h5 class="card-title">${product.price }€</h5>`;
+            selectionProductPrice.innerHTML += `<h2 class="card-title">${product.price }€</h2>`;
             const selectionProductDescription = document.getElementById("descriptionProduct");
             selectionProductDescription.innerHTML += `<p class="card-text">${product.description}</p>`;
             addColors(product);

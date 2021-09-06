@@ -3,6 +3,7 @@ fetch('http://localhost:3000/api/teddies/')
     .then(res => res.json())
     .then(data => {
         addCards(data);
+        console.log(data)
     })
     .catch((erreur) => console.log("erreur : " + erreur));
 
@@ -17,16 +18,16 @@ function addCards(data) {
       <div class="card border bg-light shadow p-3 mb-5 ">
           <div class="card-body">
               <div class="row">
-                  <a href="./produit.html?_id=${produit._id}"><img src="${produit.imageUrl}" class="img-fluid img-thumbnail p-1" alt="${produit.name}"></a>
+                  <a href="pageSite/produit.html?_id=${produit._id}"><img src="${produit.imageUrl}" class="img-fluid img-thumbnail p-1" alt="${produit.name}"></a>
                   <div class="col-6 col-sm-7 mt-3" >
-                      <h5 class="card-title">${produit.name}</h5>
+                      <h2 class="card-title">${produit.name}</h2>
                   </div>
                   <div class="col-6 col-sm-5 text-end mt-3">
-                      <h5 class="card-title">${produit.price}€</h5>
+                      <h2 class="card-title">${produit.price}€</h2>
                   </div>
               </div>
-              <!--  <p class="card-text text-truncate">${produit.description}</p> -->
-              <a href="./produit.html?_id=${produit._id}" class="btn btn-secondary">Acheter ce produit</a>
+               <p class="card-text text-truncate">${produit.description}</p>
+              <a href="pageSite/produit.html?_id=${produit._id}" class="btn btn-secondary">Voir ce produit</a>
           </div>
       </div>
   </div>`;
