@@ -20,7 +20,7 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
             const selectionProductName = document.getElementById("nameProduct");
             selectionProductName.innerHTML += `<h2 class="card-title">${product.name}</h2>`;
             const selectionProductPrice = document.getElementById("priceProduct");
-            selectionProductPrice.innerHTML += `<h2 class="card-title">${product.price }€</h2>`;
+            selectionProductPrice.innerHTML += `<h2 class="card-title">${product.price/100 }€</h2>`;
             const selectionProductDescription = document.getElementById("descriptionProduct");
             selectionProductDescription.innerHTML += `<p class="card-text">${product.description}</p>`;
             addColors(product);
@@ -34,4 +34,59 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
         }
 
 
+
+        // créer un evenement d'ecoute sur le bouton ajouter au panier
+        const btnAddBasket = document.getElementById("btnAddBasket");
+        btnAddBasket.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // création de la class produit
+            class Product {
+                constructor(id, name, description, price, colors, quantity, imgurl) {
+                    this.id = id;
+                    this.name = name;
+                    this.description = description;
+                    this.price = +price;
+                    this.colors = colors;
+                    this.quantity = +quantity;
+                    this.imgurl = imgurl;
+                }
+            }
+            const list = document.getElementById("color");
+            const quantity = document.getElementById("quantity");
+            // créer un nouveau produit
+            let oursChoisi = new Product(
+                newId,
+                product.name,
+                product.description,
+                product.price / 100,
+                list.value,
+                quantity.value,
+                product.imageUrl
+            );
+            console.log(oursChoisi);
+
+            // vérifie s'il est déja présent
+            // si il deja Present en true et sauvegarde sa place dans le localStorage
+            let isPresent = false;
+            let indexModification;
+            const cadet = JSON.parse(localStorage.getItem("ours")) || [];
+            for (products of cadet) {
+                switch (products.colors) {
+                    case oursChoisi.colors:
+                        isPresent = true;
+                        indexModification = cadet.indexOf(products);
+                }
+            }
+
+            // si le produit exixte deja on incrémente seulement la quantité
+            if (isPresent) {
+                cadet[indexModification].quantity = +cadet[indexModification].quantity + +oursChoisi.quantity;
+                localStorage.setItem("ours", JSON.stringify(cadet));
+                // si le produit n'existe pas on l'ajoute au localStorage
+            } else {
+                cadet.push(oursChoisi);
+                localStorage.setItem("ours", JSON.stringify(cadet));
+            }
+        });
     });
