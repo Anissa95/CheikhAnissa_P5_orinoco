@@ -21,6 +21,37 @@ if (cadet === null) {
     emptyBasket.classList.add("d-none");
     const fullBasket = document.getElementById("cadet");
     fullBasket.classList.toggle("d-none");
+    for (product of cadet) {
+        console.log("je suis ici" + cadet.length)
+        displayProductListTable(product);
 
+    }
+
+    //ajoute le tableau de commande
+    function displayProductListTable(product) {
+        const listProduits = document.getElementById("produitsPanier");
+        listProduits.innerHTML += `
+    <tr class="text-center">
+        <td class="w-25">
+            <img src="${product.imgurl}" class="img-fluid img-thumbnail" alt="${product.name}">
+        </td>
+        <td class="align-middle">
+            <span>${product.name}</span>
+        </td>
+        <td class="align-middle">
+            <span>${product.colors}</span>
+        </td>
+        <td class="align-middle productQuantity">
+           
+            <span class="mx-0 mx-lg-3"> ${product.quantity}</span>
+           
+        </td>
+        <td class="align-middle">
+            <span>${(product.quantity * product.price)+"€"}</span>
+        </td>
+        
+    </tr>`;
+
+    }
 
 }
