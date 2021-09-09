@@ -25,7 +25,7 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
             selectionProductDescription.innerHTML += `<p class="card-text">${product.description}</p>`;
             addColors(product);
         }
-
+        //fonction récuperation de la couleur des nounours 
         function addColors(product) {
             const choixCouleur = document.getElementById("color");
             for (let colors of product.colors) {
@@ -70,7 +70,7 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
             // si il deja Present en true et sauvegarde sa place dans le localStorage
             let isPresent = false;
             let indexModification;
-            const cadet = JSON.parse(localStorage.getItem("ours")) || [];
+            const cadet = JSON.parse(localStorage.getItem("nounours")) || [];
             for (products of cadet) {
                 switch (products.colors) {
                     case oursChoisi.colors:
@@ -78,15 +78,28 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
                         indexModification = cadet.indexOf(products);
                 }
             }
-
-            // si le produit exixte deja on incrémente seulement la quantité
+            //fonction fenetre pop up 
+            function popupConfirmation() {
+                if (window.confirm(product.name + " " + list.value + `a bien été ajouté au panier 
+Consulter le panier OK ou revenir à l'acceuil ANNULER !!! `)) {
+                    window.location.href = "./panier.html"
+                } else {
+                    window.location.href = "../index.html"
+                }
+            }
+            // si le produit existe deja on incrémente seulement la quantité
             if (isPresent) {
                 cadet[indexModification].quantity = +cadet[indexModification].quantity + +oursChoisi.quantity;
-                localStorage.setItem("ours", JSON.stringify(cadet));
+                localStorage.setItem("nounours", JSON.stringify(cadet));
+                popupConfirmation();
                 // si le produit n'existe pas on l'ajoute au localStorage
             } else {
+
+                // ajout dans le tableau de  l'objet avec les valeurs que l'utilisateur a choisi   
                 cadet.push(oursChoisi);
-                localStorage.setItem("ours", JSON.stringify(cadet));
+                // transformation en format json
+                localStorage.setItem("nounours", JSON.stringify(cadet));
+                popupConfirmation();
             }
         });
     });
