@@ -109,6 +109,62 @@ if (cadet === null) {
         return totalBasket;
 
     };
-
+    //affiche le formulaire et cache les boutons valider/supprimer panier
+    const validationBasket = document.getElementById("validationPanier");
+    const cacheButton = document.getElementById("cacheButton");
+    validationBasket.addEventListener("click", () => {
+        orderForm.classList.toggle("d-none");
+        cacheButton.classList.add("d-none");
+    });
 
 }
+order.addEventListener("click", (event) => {
+    // on prépare les infos pour l'envoie en POST
+    let contact = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        email: document.getElementById("email").value,
+    };
+    // on valide que le formulaire soit correctement rempli
+    if (
+        (regexMail.test(contact.email) == true) &
+        (regexName.test(contact.firstName) == true) &
+        (regexName.test(contact.lastName) == true) &
+        (regexCity.test(contact.city) == true) &
+        (regexAddress.test(contact.address) == true) &
+        (checkBox.checked == true)
+    ) {
+        event.preventDefault();
+
+    }
+    //envoie post 
+    //Fonction permettant l'envoie des données a l'API
+    const sendApi = async function(data) {
+        try {
+            //let reponse = await fetch ('http://localhost:3000/api/teddies/order', {
+            let reponse = await fetch(`https://oc-p5-api.herokuapp.com/api/teddies/order`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ contact, products }),
+            });
+
+
+
+            //Si la reponse de l'API est OK alors on reccup les données, ouvre la page html confirmation avec order id dans url
+            if (reponse.ok) {
+                let donnees = await reponse.json();
+                window.location = './recaputulatif.html?OrderId=' + donnees.orderId;
+                //Si pas OK alors on affiche l'erreur en reponse
+            } else {
+                event.preventDefault();
+                alert("L'erreur rencontrée est : " + reponse.status);
+            }
+        } catch (error) {
+            alert("erreur : " + error);
+        }
+    };
+});
