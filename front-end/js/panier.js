@@ -21,12 +21,12 @@ if (cadet === null) {
         displayProductListTable(product);
 
     }
-
-    //ajoute le tableau de commande
-    function displayProductListTable(product) {
-        const indexProduit = cadet.indexOf(product);
-        const listProduits = document.getElementById("produitsPanier");
-        listProduits.innerHTML += `
+}
+//ajoute le tableau de commande
+function displayProductListTable(product) {
+    const indexProduit = cadet.indexOf(product);
+    const listProduits = document.getElementById("produitsPanier");
+    listProduits.innerHTML += `
     <tr class="text-center fs-6">
         <td class="w-25">
             <img src="${product.imgurl}" class="img-fluid img-thumbnail" alt="${product.name}">
@@ -48,123 +48,85 @@ if (cadet === null) {
         
     </tr>`;
 
-    }
+}
 
-    // ajouter produit
-    function plusProduct(event) {
+// ajouter produit
+function plusProduct(event) {
 
-        const index = event.target.getAttribute("data-index");
-        cadet[index].quantity++;
-        localStorage.setItem("nounours", JSON.stringify(cadet));
-        location.reload();
-    }
+    const index = event.target.getAttribute("data-index");
+    cadet[index].quantity++;
+    localStorage.setItem("nounours", JSON.stringify(cadet));
+    location.reload();
+}
 
-    const btn_ajouter = document.getElementsByClassName("plus");
-    for (ajouter of btn_ajouter) {
-        ajouter.addEventListener("click", plusProduct);
-
-    }
-
-    //supprimer un produit
-    function minusProduct(event) {
-        const index = event.target.getAttribute("data-index");
-
-        if (cadet[index].quantity > 1) {
-            cadet[index].quantity--;
-        } else {
-            cadet.splice(index, 1);
-        }
-        localStorage.setItem("nounours", JSON.stringify(cadet));
-        location.reload();
-    }
-
-    const btn_supprimer = document.getElementsByClassName("minus");
-    for (supprimer of btn_supprimer) {
-        supprimer.addEventListener("click", minusProduct);
-
-
-    }
-
-
-    //vide le panier
-    const buttonClearBASKET = document.getElementById("viderPanier");
-    buttonClearBASKET.addEventListener("click", () => {
-        localStorage.clear();
-        location.reload();
-    });
-
-    //affiche le totalBasket
-    function totalPrice() {
-        const totalPrice = document.getElementById("totalPrice");
-        totalPrice.innerHTML += `${"Total :"+(displayTotalBasket())+ " €"}`;
-    }
-    totalPrice();
-    // calcul du total
-    function displayTotalBasket() {
-        let totalBasket = 0;
-        cadet.forEach((ours) => {
-            totalBasket = totalBasket + ours.price * ours.quantity;
-            console.log("je suis la " + totalBasket);
-        });
-        return totalBasket;
-
-    };
-    //affiche le formulaire et cache les boutons valider/supprimer panier
-    const validationBasket = document.getElementById("validationPanier");
-    const cacheButton = document.getElementById("cacheButton");
-    validationBasket.addEventListener("click", () => {
-        orderForm.classList.toggle("d-none");
-        cacheButton.classList.add("d-none");
-    });
+const btn_ajouter = document.getElementsByClassName("plus");
+for (ajouter of btn_ajouter) {
+    ajouter.addEventListener("click", plusProduct);
 
 }
-order.addEventListener("click", (event) => {
-    // on prépare les infos pour l'envoie en POST
-    let contact = {
-        firstName: document.getElementById("firstName").value,
-        lastName: document.getElementById("lastName").value,
-        address: document.getElementById("address").value,
-        city: document.getElementById("city").value,
-        email: document.getElementById("email").value,
-    };
-    // on valide que le formulaire soit correctement rempli
-    if (
-        (regexMail.test(contact.email) == true) &
-        (regexName.test(contact.firstName) == true) &
-        (regexName.test(contact.lastName) == true) &
-        (regexCity.test(contact.city) == true) &
-        (regexAddress.test(contact.address) == true) &
-        (checkBox.checked == true)
-    ) {
-        event.preventDefault();
 
+//supprimer un produit
+function minusProduct(event) {
+    const index = event.target.getAttribute("data-index");
+
+    if (cadet[index].quantity > 1) {
+        cadet[index].quantity--;
+    } else {
+        cadet.splice(index, 1);
     }
-    //envoie post 
-    //Fonction permettant l'envoie des données a l'API
-    const sendApi = async function(data) {
-        try {
-            //let reponse = await fetch ('http://localhost:3000/api/teddies/order', {
-            let reponse = await fetch(`https://oc-p5-api.herokuapp.com/api/teddies/order`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ contact, products }),
-            });
+    localStorage.setItem("nounours", JSON.stringify(cadet));
+    location.reload();
+}
+
+const btn_supprimer = document.getElementsByClassName("minus");
+for (supprimer of btn_supprimer) {
+    supprimer.addEventListener("click", minusProduct);
 
 
+}
 
-            //Si la reponse de l'API est OK alors on reccup les données, ouvre la page html confirmation avec order id dans url
-            if (reponse.ok) {
-                let donnees = await reponse.json();
-                window.location = './recaputulatif.html?OrderId=' + donnees.orderId;
-                //Si pas OK alors on affiche l'erreur en reponse
-            } else {
-                event.preventDefault();
-                alert("L'erreur rencontrée est : " + reponse.status);
-            }
-        } catch (error) {
-            alert("erreur : " + error);
-        }
-    };
+
+//vide le panier
+const buttonClearBASKET = document.getElementById("viderPanier");
+buttonClearBASKET.addEventListener("click", () => {
+    localStorage.clear();
+    location.reload();
 });
+
+//affiche le totalBasket
+function totalPrice() {
+    const totalPrice = document.getElementById("totalPrice");
+    totalPrice.innerHTML += `${"Total :"+(displayTotalBasket())+ " €"}`;
+}
+totalPrice();
+// calcul du total
+function displayTotalBasket() {
+    let totalBasket = 0;
+    cadet.forEach((ours) => {
+        totalBasket = totalBasket + ours.price * ours.quantity;
+        console.log("je suis la " + totalBasket);
+    });
+    return totalBasket;
+
+};
+//affiche le formulaire et cache les boutons valider/supprimer panier
+const validationBasket = document.getElementById("validationPanier");
+const cacheButton = document.getElementById("cacheButton");
+validationBasket.addEventListener("click", () => {
+    orderForm.classList.toggle("d-none");
+    cacheButton.classList.add("d-none");
+});
+// calcul du basketPreview
+function basketPreview() {
+    if (cadet.length == 0) {} else {
+        let addBasketPreview = document.getElementById("basketPreview");
+        let calculBasketPreview = 0;
+        for (product of cadet) {
+            calculBasketPreview += product.quantity;
+        }
+        addBasketPreview.innerHTML = ` <span class="badge rounded-pill bg-secondary align-middle  ">${calculBasketPreview}</span>` + `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+      </svg>`;
+    }
+}
+basketPreview()
