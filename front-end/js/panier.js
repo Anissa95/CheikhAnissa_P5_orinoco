@@ -27,7 +27,7 @@ if (cadet === null) {
         const indexProduit = cadet.indexOf(product);
         const listProduits = document.getElementById("produitsPanier");
         listProduits.innerHTML += `
-    <tr class="text-center">
+    <tr class="text-center fs-6">
         <td class="w-25">
             <img src="${product.imgurl}" class="img-fluid img-thumbnail" alt="${product.name}">
         </td>
@@ -37,13 +37,13 @@ if (cadet === null) {
         <td class="align-middle">
             <span>${product.colors}</span>
         </td>
-        <td class="align-middle productQuantity">
-        <button type="button" class="rounded minus data-toggle="modal" data-target="#exampleModal" data-index="${indexProduit}"><span class="fas fa-minus-square text-danger" data-index="${indexProduit}"></span></button>
+        <td class="align-middle p-0 productQuantity">
+        <button type="button" class=" btn rounded minus p-0  data-index="${indexProduit}"><span class="fas fa-minus-square text-danger" data-index="${indexProduit}"></span></button>
             <span class="mx-0 mx-lg-3"> ${product.quantity}</span>
-            <button type="button" class="rounded plus" data-toggle="modal" data-target="#exampleModal" data-index="${indexProduit}"><span class="fas fa-plus-square text-success" data-index="${indexProduit}"></span></button>
+            <button type="button" class=" btn rounded plus p-0" data-index="${indexProduit}"><span class="fas fa-plus-square text-success" data-index="${indexProduit}"></span></button>
         </td>
-        <td >
-            <span >${(product.quantity * product.price)+"€"}</span>
+        <td class="align-middle">
+            <span>${(product.quantity * product.price)+"€"}</span>
         </td>
         
     </tr>`;
@@ -85,6 +85,30 @@ if (cadet === null) {
 
     }
 
+
+    //vide le panier
+    const buttonClearBASKET = document.getElementById("viderPanier");
+    buttonClearBASKET.addEventListener("click", () => {
+        localStorage.clear();
+        location.reload();
+    });
+
+    //affiche le totalBasket
+    function totalPrice() {
+        const totalPrice = document.getElementById("totalPrice");
+        totalPrice.innerHTML += `${"Total :"+(displayTotalBasket())+ " €"}`;
+    }
+    totalPrice();
+    // calcul du total
+    function displayTotalBasket() {
+        let totalBasket = 0;
+        cadet.forEach((ours) => {
+            totalBasket = totalBasket + ours.price * ours.quantity;
+            console.log("je suis la " + totalBasket);
+        });
+        return totalBasket;
+
+    };
 
 
 }
