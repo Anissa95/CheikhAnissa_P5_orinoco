@@ -18,7 +18,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white ">
         <div class="container-fluid mx-2 mx-lg-5">
-            <a href="../index.html"> <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="/back-end/images/logo.png" alt="logo orinoco" />
+            <a href="../index.html"> <img class="img-fluid mx-4 mx-lg-0 mr-auto w-35" src="/back-end/images/logo.png" alt="logo orinoco" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,14 +41,14 @@
     </nav>
     <main id="product">
         <div class="p-5 mx-5 mt-4 rounded bg-secondary">
-            <h1 class="text-center fs-2 text-light">Orinoco</h1>
-            <h2 class="text-center text-light">Récapitulatif de votre panier</h2>
+            <h1 class="text-center fs-2 text-dark">Orinoco</h1>
+            <h2 class="text-center text-dark">Récapitulatif de votre panier</h2>
         </div>
         <!-- panier vide  -->
         <section id="panierVide">
             <div class="container my-3 py-1">
                 <div class="text-center my-5 shadow p-3 mb-5 bg-body rounded">
-                    <h1 class="fs-1 font-weight-bold text-secondary my-5">Oups, votre panier semble vide, commencez vos achats
+                    <h1 class="fs-1 font-weight-bold text-dark my-5">Oups, votre panier semble vide, commencez vos achats
                     </h1>
                     <a role="button" class="btn btn-secondary text-uppercase my-3" href="../index.html">Commencez vos achats
                 </a>
@@ -76,9 +76,8 @@
                         </tbody>
                         <tfoot>
                             <tr class="text-center fs-5 bg-light">
-                                <th colspan="4" class="bg-white"></th>
-                                <th colspan="1">Total : </th>
-                                <th colspan="1" id="totalPrice"></th>
+                                <th colspan="5" id="totalPrice"> </th>
+
                             </tr>
                         </tfoot>
                     </table>
@@ -88,7 +87,7 @@
                         <button type="submit" class="btn btn-secondary mx-5" id="validationPanier">Valider le panier</button>
                     </div>
                     <div class="col-12 col-sm-6 my-4">
-                        <button type="button" class="btn btn-danger mx-5" data-bs-toggle="modal" data-bs-target="#modalClearBasket">Vider le panier</button>
+                        <button type="button" class="btn btn-danger mx-5" id="viderPanier" data-bs-toggle="modal" data-bs-target="#modalClearBasket">Vider le panier</button>
                     </div>
 
                 </div>
