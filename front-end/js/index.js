@@ -23,7 +23,7 @@ function addCards(data) {
                       <h2 class="card-title">${produit.name}</h2>
                   </div>
                   <div class="col-6 col-sm-5 text-end mt-3">
-                      <h2 class="card-title">${produit.price/100}€</h2>
+                      <h2 class="card-title">${produit.price/100},00 €</h2>
                   </div>
               </div>
                <p class="card-text text-truncate">${produit.description}</p>
@@ -32,4 +32,5 @@ function addCards(data) {
       </div>
   </div>`;
     }
+
 }

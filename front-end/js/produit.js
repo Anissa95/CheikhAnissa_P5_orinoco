@@ -4,6 +4,7 @@ const newId = searchParams.get("_id");
 console.log(newId)
 
 
+
 //modification de l'adresse d'appel à l'API (Api+id )
 fetch(`http://localhost:3000/api/teddies/${newId}`)
     .then((response) => response.json())
@@ -20,7 +21,7 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
             const selectionProductName = document.getElementById("nameProduct");
             selectionProductName.innerHTML += `<h2 class="card-title">${product.name}</h2>`;
             const selectionProductPrice = document.getElementById("priceProduct");
-            selectionProductPrice.innerHTML += `<h2 class="card-title">${product.price/100 }€</h2>`;
+            selectionProductPrice.innerHTML += `<h2 class="card-title">${product.price/100 },00 €</h2>`;
             const selectionProductDescription = document.getElementById("descriptionProduct");
             selectionProductDescription.innerHTML += `<p class="card-text">${product.description}</p>`;
             addColors(product);
@@ -70,12 +71,12 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
             // si il deja Present en true et sauvegarde sa place dans le localStorage
             let isPresent = false;
             let indexModification;
-            const cadet = JSON.parse(localStorage.getItem("nounours")) || [];
-            for (products of cadet) {
+            const caddie = JSON.parse(localStorage.getItem("nounours")) || [];
+            for (products of caddie) {
                 switch (products.colors) {
                     case oursChoisi.colors:
                         isPresent = true;
-                        indexModification = cadet.indexOf(products);
+                        indexModification = caddie.indexOf(products);
                 }
             }
             //fonction fenetre pop up 
@@ -89,17 +90,19 @@ Consulter le panier OK ou revenir à l'acceuil ANNULER !!! `)) {
             }
             // si le produit existe deja on incrémente seulement la quantité
             if (isPresent) {
-                cadet[indexModification].quantity = +cadet[indexModification].quantity + +oursChoisi.quantity;
-                localStorage.setItem("nounours", JSON.stringify(cadet));
+                caddie[indexModification].quantity = +caddie[indexModification].quantity + +oursChoisi.quantity;
+                localStorage.setItem("nounours", JSON.stringify(caddie));
                 popupConfirmation();
                 // si le produit n'existe pas on l'ajoute au localStorage
+
             } else {
 
                 // ajout dans le tableau de  l'objet avec les valeurs que l'utilisateur a choisi   
-                cadet.push(oursChoisi);
+                caddie.push(oursChoisi);
                 // transformation en format json
-                localStorage.setItem("nounours", JSON.stringify(cadet));
+                localStorage.setItem("nounours", JSON.stringify(caddie))
                 popupConfirmation();
+
             }
         });
     });
