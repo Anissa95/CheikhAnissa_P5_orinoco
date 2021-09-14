@@ -18,7 +18,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white ">
         <div class="container-fluid mx-2 mx-lg-5">
-            <a href="../index.html"> <img class="img-fluid mx-4 mx-lg-0 mr-auto w-35" src="/back-end/images/logo.png" alt="logo orinoco" />
+            <a href="../index.html"> <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="/back-end/images/logo.png" alt="logo orinoco" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,8 +30,8 @@
                             <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
                           </svg></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./panier.html" title="Votre panier" id="basketPreview"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                    <li class="nav-item ">
+                        <a class="nav-link d-flex flex-column  " href="./panier.html" title="Votre panier" id="basketPreview"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                             <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                           </svg></a>
                     </li>
@@ -58,12 +58,12 @@
 
         <!-- Table des achats  -->
         <section id="panier" class="container my-5 align-middle ">
-            <div class=" d-none" id="cadet">
+            <div class=" d-none" id="caddie">
                 <p class="text-center fs-4 text-light bg-secondary basket d-none">Contenu du panier</p>
                 <div class="table-responsive">
                     <table class="table table-hover my-auto mx-0">
                         <thead>
-                            <tr class="text-center fs-5">
+                            <tr class="text-center ">
                                 <th scole="col">Produit</th>
                                 <th scole="col">Nom</th>
                                 <th scole="col">Couleur</th>
@@ -75,7 +75,7 @@
                             <!--Insertion panier.js-->
                         </tbody>
                         <tfoot>
-                            <tr class="text-center fs-5 bg-light">
+                            <tr class="text-center ">
                                 <th colspan="5" id="totalPrice"> </th>
 
                             </tr>
@@ -83,11 +83,11 @@
                     </table>
                 </div>
                 <div class="text-center my-5 row" id="cacheButton">
-                    <div class="col-12 col-sm-6 my-4">
-                        <button type="submit" class="btn btn-secondary mx-5" id="validationPanier">Valider le panier</button>
+                    <div class="col-12 col-sm-6 my-3">
+                        <button type="submit" class="btn btn-lg btn-secondary  my-0" id="validationPanier">Valider le panier</button>
                     </div>
-                    <div class="col-12 col-sm-6 my-4">
-                        <button type="button" class="btn btn-danger mx-5" id="viderPanier" data-bs-toggle="modal" data-bs-target="#modalClearBasket">Vider le panier</button>
+                    <div class="col-12 col-sm-6 my-3">
+                        <button type="button" class="btn btn-lg btn-danger  my-0" id="viderPanier" data-bs-toggle="modal" data-bs-target="#modalClearBasket">Vider le panier</button>
                     </div>
 
                 </div>
@@ -98,29 +98,29 @@
             <form class="row g-3" id="validation-formulaire">
                 <div class="col-md-4">
                     <label for="validationDefault01" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Ex: 'jean'" pattern="^[A-Z][A-Za-z\é\è\ê\-]+$" required>
+                    <input type="text" class="form-control" id="firstName" placeholder="Ex: 'jean'" required>
                 </div>
                 <div class="col-md-4">
                     <label for="validationDefault02" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Ex: 'dupont'" pattern="^[A-Z][A-Za-z\é\è\ê\-]+$" required>
+                    <input type="text" class="form-control" id="lastName" placeholder="Ex: 'dupont'" required>
                 </div>
                 <div class="col-md-4">
                     <label for="validationDefaultUsername" class="form-label">Email</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="email" placeholder="Ex: 'jeandupont@mail.fr'" aria-describedby="inputGroupPrepend" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$" required>
+                        <input type="text" class="form-control" id="email" placeholder="Ex: 'jeandupont@mail.fr'" aria-describedby="inputGroupPrepend" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label for="validationDefault03" class="form-label">Adresse</label>
-                    <input type="text" class="form-control" id="address" placeholder="Ex: '1 avenue de paris'" pattern="^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$" required>
+                    <input type="text" class="form-control" id="address" placeholder="Ex: '1 avenue de paris'" required>
                 </div>
                 <div class="col-md-3">
                     <label for="validationDefault04" class="form-label">Ville</label>
-                    <input type="text" class="form-control" id="city" placeholder="Ex: 'eaubonne'" pattern="^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){1,10}$" required>
+                    <input type="text" class="form-control" id="city" placeholder="Ex: 'eaubonne'" required>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-secondary" type="submit" id="commande">Passer la commande</button>
+                    <button class="btn btn-lg btn-secondary " type="submit" id="commande">Passer la commande</button>
                 </div>
             </form>
         </section>
@@ -136,7 +136,9 @@
     </footer>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="../js/panier.js" defer></script>
+    <script src="../js/panier.js"></script>
+    <script src="../js/fonctions.js"></script>
+
 </body>
 
 </html>
