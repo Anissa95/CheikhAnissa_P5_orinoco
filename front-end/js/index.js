@@ -5,7 +5,11 @@ fetch('http://localhost:3000/api/teddies/')
         addCards(data);
         console.log(data)
     })
-    .catch((erreur) => console.log("erreur : " + erreur));
+    .catch((error) => {
+        let serveur = document.getElementById("serveur")
+        serveur.innerHTML =
+            "Désolés la page n'a pas pu se télécharger veuillez vérifiez que le serveur est bien été lancé sous le Port 3000 ?"
+    })
 
 // fonction pour la création des cards de la page d'accueil
 function addCards(data) {
