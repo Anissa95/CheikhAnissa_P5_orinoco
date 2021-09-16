@@ -178,13 +178,13 @@ function validationFormulaire() {
                 .then((data) => {
                     //Stockage de la commande dans local Storage
                     localStorage.setItem("commande", JSON.stringify(data));
-                    window.confirm("étes vous sur de vouloir passer lacommande");
+                    window.confirm("Êtes-vous sûr de vouloir passer la commande");
                     document.location.href = "./recapitulatif.html";
                 })
                 .catch((erreur) => console.log("erreur : " + erreur));
         } else {
             alert(
-                "Tous les champs du formulaires sont obligatoires!!!!."
+                "Tous les champs du formulaire sont obligatoires!!!!."
             );
         }
     });

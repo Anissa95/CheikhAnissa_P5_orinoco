@@ -8,7 +8,7 @@ fetch('http://localhost:3000/api/teddies/')
     .catch((error) => {
         let serveur = document.getElementById("serveur")
         serveur.innerHTML =
-            "Désolés la page n'a pas pu se télécharger veuillez vérifiez que le serveur est bien été lancé sous le Port 3000 ?"
+            "Désolés la page n'a pas pu se télécharger, veuillez vérifier que le serveur a bien été lancé sous le Port 3000 ?"
     })
 
 // fonction pour la création des cards de la page d'accueil
