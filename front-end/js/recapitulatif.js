@@ -43,8 +43,6 @@ function displayProductListTable(product) {
 }
 for (product of caddie) {
     displayProductListTable(product);
-
-
 }
 
 // calcul du total
@@ -59,13 +57,9 @@ function displayTotalBasket() {
     return totalBasket;
 
 };
-//vide le localStorage
-const clickHome = document.getElementById("accueil");
-clickHome.addEventListener("click", () => {
-    clearBasket();
-});
 
-const clickCaddie = document.getElementById("basketPreview");
-clickCaddie.addEventListener("click", () => {
-    clearBasket();
-});
+//Vider le local Storage 
+function clearBasket() {
+    localStorage.clear();
+}
+clearBasket();
