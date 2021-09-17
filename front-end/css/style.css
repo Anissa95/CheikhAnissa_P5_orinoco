@@ -18,6 +18,36 @@ h2.text-light {
     object-fit: cover;
 }
 
-.w-25 {
-    width: 35%!important;
+
+/* Header*/
+
+.container-fluid {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container {
+    width: 150px;
+}
+
+.header-container img {
+    max-width: 100%;
+}
+
+.header-container a {
+    color: #0a0a0a;
+}
+
+.header-container img {
+    max-width: 100%;
+}
+
+.header-container svg {
+    margin-left: 10px;
+}
+
+#formulaire h2 {
+    color: red;
 }
