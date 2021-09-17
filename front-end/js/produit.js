@@ -106,15 +106,11 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
             }
         });
     })
-    .catch(function(error) {
-        // PG : quand on fait un 
-        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-        // PG : ici : vider la div 
+    .catch((error) => {
+
         let product = document.getElementById("product");
-        product.innerHTML = `
-        <h1 class="fs-1 font-weight-bold text-dark text-center my-5">Cette page n'existe pas!!!
-        </h1>
-        <a role="button" class="btn btn-secondary text-uppercase my-3" href="../index.html">Retournez a l'acceuil
-    </a>
+        product.innerHTML = `<h1 class="fs-1 font-weight-bold text-dark text-center my-5">Cette page n'existe pas!!!</h1> 
+        <div class= text-center ><a role="button" class="btn btn-secondary  text-uppercase my-3" href="../index.html">Retournez a l'acceuil
+    </a></div>
     </div>`;
     });
