@@ -9,10 +9,8 @@ fetch('http://localhost:3000/api/teddies/')
         let serveur = document.getElementById("serveur")
         serveur.innerHTML =
             ` <div class="row g-0 shadow p-3 "><h3 class="fs-4 font-weight-bold text-dark text-center my-5">Désolés la page n'a pas pu se télécharger, veuillez vérifier que le serveur a bien été lancé sous le Port 3000 ?</h3></div> `
-
     })
-
-// fonction pour la création des cards de la page d'accueil
+    // fonction pour la création des cards de la page d'accueil
 function addCards(data) {
     //boucle pour chaque iteration d'un produit
     for (produit of data) {
