@@ -179,7 +179,7 @@ function validationFormulaire() {
                     //Stockage de la commande dans local Storage
                     localStorage.setItem("commande", JSON.stringify(data));
                     window.confirm("Êtes-vous sûr de vouloir passer la commande");
-                    document.location.href = "./recapitulatif.html";
+                    document.location.href = "./confirmation.html";
                 })
                 .catch((erreur) => console.log("erreur : " + erreur));
         } else {
