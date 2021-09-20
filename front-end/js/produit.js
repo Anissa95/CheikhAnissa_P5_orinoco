@@ -1,25 +1,20 @@
 //Récupération de l'id du produit
 const searchParams = new URLSearchParams(location.search);
 const newId = searchParams.get("_id");
-console.log(newId)
-
-// PG : d abord les variables, puis les functions puis les appels à ces functions
-
+//console.log(newId)
 // fonction pour la création de la carte du produit
 function addCard(product) {
-
     // Récuperation des informations du produit
     const selectionProductImage = document.getElementById("imageProduct");
     selectionProductImage.innerHTML += `<img src="${product.imageUrl}" class="img-fluid img-thumbnail" alt="${product.name}">`;
     const selectionProductName = document.getElementById("nameProduct");
-    selectionProductName.innerHTML += `<h2 class="card-title">${product.name}</h2>`;
+    selectionProductName.innerHTML += `<h3 class="card-title">${product.name}</h3>`;
     const selectionProductPrice = document.getElementById("priceProduct");
-    selectionProductPrice.innerHTML += `<h2 class="card-title">${product.price / 100},00 €</h2>`;
+    selectionProductPrice.innerHTML += `<h3 class="card-title">${product.price / 100},00 €</h3>`;
     const selectionProductDescription = document.getElementById("descriptionProduct");
     selectionProductDescription.innerHTML += `<p class="card-text">${product.description}</p>`;
     addColors(product);
 }
-
 //fonction récuperation de la couleur des nounours 
 function addColors(product) {
     const choixCouleur = document.getElementById("color");
@@ -27,7 +22,6 @@ function addColors(product) {
         choixCouleur.innerHTML += `<option value="${colors}">${colors}</option>`;
     }
 }
-
 //fonction fenetre pop up 
 function popupConfirmation(list) {
     if (window.confirm(product.name + " " + list.value + `a bien été ajouté au panier 
@@ -37,14 +31,12 @@ Consulter le panier OK ou revenir à l'acceuil ANNULER !!! `)) {
         window.location.href = "../index.html"
     }
 }
-
 //modification de l'adresse d'appel à l'API (Api+id )
 fetch(`http://localhost:3000/api/teddies/${newId}`)
     .then((response) => response.json())
     .then((data) => {
         const product = data;
         addCard(data);
-
         // créer un evenement d'ecoute sur le bouton ajouter au panier
         const btnAddBasket = document.getElementById("btnAddBasket");
         btnAddBasket.addEventListener("click", (e) => {
@@ -74,8 +66,7 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
                 quantity.value,
                 product.imageUrl
             );
-            console.log(oursChoisi);
-
+            //console.log(oursChoisi);
             // vérifie s'il est déja présent
             // si il deja Present en true et sauvegarde sa place dans le localStorage
             let isPresent = false;
@@ -110,7 +101,5 @@ fetch(`http://localhost:3000/api/teddies/${newId}`)
 
         let product = document.getElementById("product");
         product.innerHTML = `<h1 class="fs-1 font-weight-bold text-dark text-center my-5">Cette page n'existe pas!!!</h1> 
-        <div class= text-center ><a role="button" class="btn btn-secondary  text-uppercase my-3" href="../index.html">Retournez a l'acceuil
-    </a></div>
-    </div>`;
+        <div class= text-center ><a role="button" class="btn btn-secondary  text-uppercase my-3" href="../index.html">Retournez a l'acceuil</a></div></div>`;
     });

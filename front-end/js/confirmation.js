@@ -1,9 +1,7 @@
 const order = JSON.parse(localStorage.getItem("commande")) || [];
 const caddie = JSON.parse(localStorage.getItem("nounours")) || [];
-
-
 // affiche Mes informations
-const informations = document.getElementById("achteur");
+const informations = document.getElementById("acheteur");
 informations.innerHTML += `
     <p class="fs-5"><span class="fw-bold text-capitalize">${order.contact.firstName}</span>, merci pour votre achat sur notre site !</p>
     <p class="fs-5">votre facture d'un montant de : <span class="fw-bold">${(displayTotalBasket()) + ",00 €" }  </span>et enregitrée sous la réference N°: <span class="fw-bold">${order.orderId }</span> .</p>
@@ -44,20 +42,17 @@ function displayProductListTable(product) {
 for (product of caddie) {
     displayProductListTable(product);
 }
-
 // calcul du total
 function displayTotalBasket() {
     let totalBasket = 0;
     if (caddie != null) {
         caddie.forEach((ours) => {
             totalBasket = totalBasket + ours.price * ours.quantity;
-            console.log("je suis la " + totalBasket);
+            //console.log("je suis la " + totalBasket);
         });
     }
     return totalBasket;
-
 };
-
 //Vider le local Storage 
 function clearBasket() {
     localStorage.clear();

@@ -1,10 +1,8 @@
 // affichage des produits du panier
 const caddie = JSON.parse(localStorage.getItem("nounours"));
-console.log(caddie);
-
+//console.log(caddie);
 const orderForm = document.getElementById("formulaire");
 const emptyBasket = document.getElementById("panierVide");
-
 //ajoute le tableau de commande
 function displayProductListTable(product) {
     const indexProduit = caddie.indexOf(product);
@@ -27,12 +25,9 @@ function displayProductListTable(product) {
         </td>
         <td class="align-middle">
             <span>${(product.quantity * product.price)+"€"}</span>
-        </td>
-        
+        </td> 
     </tr>`;
-
 }
-
 // ajouter produit
 function plusProduct(event) {
 
@@ -70,8 +65,6 @@ function supprimerProduit() {
 
     }
 }
-
-
 //vide le panier
 function viderPanier() {
     const buttonClearBASKET = document.getElementById("viderPanier");
@@ -92,7 +85,7 @@ function displayTotalBasket() {
     if (caddie != null) {
         caddie.forEach((ours) => {
             totalBasket = totalBasket + ours.price * ours.quantity;
-            console.log("je suis la " + totalBasket);
+            // console.log("je suis la " + totalBasket);
         });
     }
     return totalBasket;
@@ -124,10 +117,7 @@ function basketPreview() {
         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
       </svg>` + ` <span class="badge rounded-pill bg-secondary align-middle ">${calculBasketPreview}</span>`;
     }
-
-
 }
-
 /// formulaire 
 //validation du formulaire et envoie en POST
 const commande = document.getElementById("commande");
@@ -155,15 +145,12 @@ function validationFormulaire() {
             (regexAddress.test(contact.address) == true)
         ) {
             event.preventDefault();
-
-
             //On ajoute les infos des produits a l'id de l'acheteur 
             let products = [];
             for (listId of caddie) {
                 products.push(listId.id);
 
             }
-
             // -------  Envoi de la requête POST au back-end --------
             // Envoie de la requête avec l'en-tête. le local Storage contiendra les données de l'acheteur, id de la commande  ,les infos du produits
 
@@ -193,8 +180,6 @@ function validationFormulaire() {
 function affichePanier() {
     if (caddie === null) {
         orderForm.classList.add("d-none");
-
-
         // sinon affiche le tableau avec les produits
     } else {
         emptyBasket.classList.add("d-none");
