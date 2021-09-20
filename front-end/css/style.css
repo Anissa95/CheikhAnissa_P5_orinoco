@@ -12,9 +12,9 @@ h2.text-light {
     color: rgb(33, 33, 190);
 }
 
-.img-thumbnail {
+#list .img-thumbnail {
     width: 100%;
-    max-height: 350px;
+    max-height: 270px;
     object-fit: cover;
 }
 

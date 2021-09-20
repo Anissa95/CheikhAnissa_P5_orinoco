@@ -154,7 +154,7 @@ function validationFormulaire() {
             // -------  Envoi de la requête POST au back-end --------
             // Envoie de la requête avec l'en-tête. le local Storage contiendra les données de l'acheteur, id de la commande  ,les infos du produits
 
-            fetch("https://teddies-api.herokuapp.com/api/teddies/order", {
+            fetch("http://localhost:3000/api/teddies/order", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

@@ -4,7 +4,7 @@ const caddie = JSON.parse(localStorage.getItem("nounours")) || [];
 const informations = document.getElementById("acheteur");
 informations.innerHTML += `
     <p class="fs-5"><span class="fw-bold text-capitalize">${order.contact.firstName}</span>, merci pour votre achat sur notre site !</p>
-    <p class="fs-5">votre facture d'un montant de : <span class="fw-bold">${(displayTotalBasket()) + ",00 €" }  </span>et enregitrée sous la réference N°: <span class="fw-bold">${order.orderId }</span> .</p>
+    <p class="fs-5">votre facture est d'un montant de : <span class="fw-bold">${(displayTotalBasket()) + ",00 €" }  </span>et enregitrée sous la réference N°: <span class="fw-bold">${order.orderId }</span> .</p>
     <p class="fs-5">Votre facture va vous être transmise par mail à : <span class="fw-bold">${order.contact.email}</span>.</p>
     <p class="fs-5">Votre commande sera envoyée à l'adresse suivante :
     <div class=" fs-5 text-center fw-bold">

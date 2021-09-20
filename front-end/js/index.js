@@ -3,7 +3,7 @@ fetch('http://localhost:3000/api/teddies/')
     .then(res => res.json())
     .then(data => {
         addCards(data);
-        console.log(data)
+        //console.log(data)
     })
     .catch((error) => {
         let serveur = document.getElementById("serveur");
@@ -14,7 +14,7 @@ fetch('http://localhost:3000/api/teddies/')
 function addCards(data) {
     //boucle pour chaque iteration d'un produit
     for (produit of data) {
-        //recupère l'élément liste dans le HTML
+        //recupère l'élément list dans le HTML
         const card = document.getElementById("list");
         card.innerHTML += `
                 <div class="col-sm-12 col-md-6 col-lg-6 pb-3  ">

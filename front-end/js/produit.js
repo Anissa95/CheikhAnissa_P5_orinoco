@@ -24,7 +24,7 @@ function addColors(product) {
 }
 //fonction fenetre pop up 
 function popupConfirmation(list) {
-    if (window.confirm(product.name + " " + list.value + `a bien été ajouté au panier 
+    if (window.confirm(` Votre produit a bien été ajouté au panier 
 Consulter le panier OK ou revenir à l'acceuil ANNULER !!! `)) {
         window.location.href = "./panier.html"
     } else {
