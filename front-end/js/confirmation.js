@@ -1,5 +1,5 @@
 const order = JSON.parse(localStorage.getItem("commande")) || [];
-const caddie = JSON.parse(localStorage.getItem("nounours")) || [];
+
 // affiche Mes informations
 const informations = document.getElementById("acheteur");
 informations.innerHTML += `
@@ -14,31 +14,7 @@ informations.innerHTML += `
     </div>
     `;
 
-function displayProductListTable(product) {
-    const indexProduit = caddie.indexOf(product);
-    const listProduits = document.getElementById("produitsPanier");
-    listProduits.innerHTML += `
-        <tr class="text-center fs-6">
-            <td class="w-25">
-                <img src="${product.imgurl}" class="img-fluid img-thumbnail" alt="${product.name}">
-            </td>
-            <td class="align-middle">
-                <span>${product.name}</span>
-            </td>
-            <td class="align-middle">
-                <span>${product.colors}</span>
-            </td>
-            <td class="align-middle p-0 productQuantity">
-            <button type="button" class=" btn rounded minus p-0  data-index="${indexProduit}"><span class="fas fa-minus-square text-danger" data-index="${indexProduit}"></span></button>
-                <span class="mx-0 mx-lg-3"> ${product.quantity}</span>
-                <button type="button" class=" btn rounded plus p-0" data-index="${indexProduit}"><span class="fas fa-plus-square text-success" data-index="${indexProduit}"></span></button>
-            </td>
-            <td class="align-middle">
-                <span>${(product.quantity * product.price)+",00 €"}</span>
-            </td>
-            
-        </tr>`;
-}
+
 for (product of caddie) {
     displayProductListTable(product);
 }
