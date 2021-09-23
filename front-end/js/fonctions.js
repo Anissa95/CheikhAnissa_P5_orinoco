@@ -1,9 +1,8 @@
 // affichage des produits du panier
-const caddie = JSON.parse(localStorage.getItem("nounours"));
+const caddie = JSON.parse(localStorage.getItem("nounours")) || [];
 // calcul du basketPreview
 function basketPreview() {
     if (caddie && caddie.length != 0) {
-
         let addBasketPreview = document.getElementById("basketPreview");
         let calculBasketPreview = 0;
         for (product of caddie) {
@@ -36,7 +35,6 @@ function displayProductListTable(product) {
             </td>
             <td class="align-middle">
                 <span>${(product.quantity * product.price)+",00 €"}</span>
-            </td>
-            
+            </td> 
         </tr>`;
 }

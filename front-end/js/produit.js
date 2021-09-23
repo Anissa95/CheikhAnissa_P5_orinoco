@@ -1,6 +1,5 @@
  //Mise a jour du panier
  basketPreview();
-
  //Récupération de l'id du produit
  const searchParams = new URLSearchParams(location.search);
  const newId = searchParams.get("_id");
@@ -44,7 +43,6 @@ Consulter le panier OK ou revenir à l'acceuil ANNULER !!! `)) {
          const btnAddBasket = document.getElementById("btnAddBasket");
          btnAddBasket.addEventListener("click", (e) => {
              e.preventDefault();
-
              // création de la class produit
              class Product {
                  constructor(id, name, description, price, colors, quantity, imgurl) {
@@ -89,9 +87,7 @@ Consulter le panier OK ou revenir à l'acceuil ANNULER !!! `)) {
                  localStorage.setItem("nounours", JSON.stringify(caddie));
                  popupConfirmation(list);
                  // si le produit n'existe pas on l'ajoute au localStorage
-
              } else {
-
                  // ajout dans le tableau de l'objet avec les valeurs que l'utilisateur a choisi   
                  caddie.push(oursChoisi);
                  // transformation en format json
@@ -104,5 +100,5 @@ Consulter le panier OK ou revenir à l'acceuil ANNULER !!! `)) {
 
          let product = document.getElementById("product");
          product.innerHTML = `<h1 class="fs-1 font-weight-bold text-dark text-center my-5">Cette page n'existe pas!!!</h1> 
-        <div class= text-center ><a role="button" class="btn btn-secondary  text-uppercase my-3" href="../index.html">Retournez a l'acceuil</a></div></div>`;
+        <div class= text-center ><a role="button" class="btn btn-secondary  text-uppercase my-3" href="../index.html">Retournez a l'accueil</a></div></div>`;
      });
