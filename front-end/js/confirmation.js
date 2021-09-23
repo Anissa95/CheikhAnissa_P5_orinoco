@@ -1,5 +1,4 @@
 const order = JSON.parse(localStorage.getItem("commande")) || [];
-
 // affiche Mes informations
 const informations = document.getElementById("acheteur");
 informations.innerHTML += `
@@ -13,8 +12,6 @@ informations.innerHTML += `
         <p class="text-capitalize">${order.contact.city}</p>
     </div>
     `;
-
-
 for (product of caddie) {
     displayProductListTable(product);
 }
