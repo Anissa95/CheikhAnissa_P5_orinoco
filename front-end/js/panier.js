@@ -1,11 +1,10 @@
+//Mise ajour du panier 
+basketPreview();
 //console.log(caddie);
 const orderForm = document.getElementById("formulaire");
 const emptyBasket = document.getElementById("panierVide");
-//ajoute le tableau de commande
-
 // ajouter produit
 function plusProduct(event) {
-
     const index = event.target.getAttribute("data-index");
     caddie[index].quantity++;
     localStorage.setItem("nounours", JSON.stringify(caddie));
@@ -16,13 +15,11 @@ function ajouterProduit() {
     const btn_ajouter = document.getElementsByClassName("plus");
     for (ajouter of btn_ajouter) {
         ajouter.addEventListener("click", plusProduct);
-
     }
 }
 //supprimer un produit
 function minusProduct(event) {
     const index = event.target.getAttribute("data-index");
-
     if (caddie[index].quantity > 1) {
         caddie[index].quantity--;
     } else {
@@ -36,8 +33,6 @@ function supprimerProduit() {
     const btn_supprimer = document.getElementsByClassName("minus");
     for (supprimer of btn_supprimer) {
         supprimer.addEventListener("click", minusProduct);
-
-
     }
 }
 //vide le panier
@@ -53,7 +48,6 @@ function totalPrice() {
     const totalPrice = document.getElementById("totalPrice");
     totalPrice.innerHTML += `${"Total :"+(displayTotalBasket())+ " €"}`;
 }
-
 // calcul du total
 function displayTotalBasket() {
     let totalBasket = 0;
@@ -64,7 +58,6 @@ function displayTotalBasket() {
         });
     }
     return totalBasket;
-
 };
 //affiche le formulaire et cache les boutons valider/supprimer panier
 function afficheFormulaire() {
@@ -79,7 +72,6 @@ function afficheFormulaire() {
         cacheButton.classList.add("d-none");
     });
 }
-
 /// formulaire 
 //validation du formulaire et envoie en POST
 const commande = document.getElementById("commande");
@@ -111,11 +103,18 @@ function validationFormulaire() {
             let products = [];
             for (listId of caddie) {
                 products.push(listId.id);
+            }
 
+            function confirmation() {
+                if (window.confirm(`Êtes-vous sûr de vouloir passer la commande `)) {
+                    window.location.href = "./confirmation.html"
+                } else {
+                    window.location.href = "../index.html"
+                    localStorage.clear();
+                }
             }
             // -------  Envoi de la requête POST au back-end --------
             // Envoie de la requête avec l'en-tête. le local Storage contiendra les données de l'acheteur, id de la commande  ,les infos du produits
-
             fetch("http://localhost:3000/api/teddies/order", {
                     method: "POST",
                     headers: {
@@ -127,8 +126,7 @@ function validationFormulaire() {
                 .then((data) => {
                     //Stockage de la commande dans local Storage
                     localStorage.setItem("commande", JSON.stringify(data));
-                    window.confirm("Êtes-vous sûr de vouloir passer la commande");
-                    document.location.href = "./confirmation.html";
+                    confirmation()
                 })
                 .catch((erreur) => console.log("erreur : " + erreur));
         } else {
@@ -140,7 +138,7 @@ function validationFormulaire() {
 }
 // indique que le panier est vide
 function affichePanier() {
-    if (caddie === null) {
+    if (caddie.length < 1) {
         orderForm.classList.add("d-none");
         // sinon affiche le tableau avec les produits
     } else {
@@ -150,14 +148,12 @@ function affichePanier() {
         fullBasket.classList.toggle("d-none");
         for (product of caddie) {
             displayProductListTable(product);
-
         }
+        main();
     }
-    main();
 }
 
 function main() {
-    displayTotalBasket();
     totalPrice();
     viderPanier();
     ajouterProduit();
@@ -166,4 +162,3 @@ function main() {
     validationFormulaire();
 }
 affichePanier();
-basketPreview();
