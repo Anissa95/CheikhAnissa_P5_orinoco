@@ -97,7 +97,6 @@ Consulter le panier OK ou revenir à l'acceuil ANNULER !!! `)) {
          });
      })
      .catch((error) => {
-
          let product = document.getElementById("product");
          product.innerHTML = `<h1 class="fs-1 font-weight-bold text-dark text-center my-5">Cette page n'existe pas!!!</h1> 
         <div class= text-center ><a role="button" class="btn btn-secondary  text-uppercase my-3" href="../index.html">Retournez a l'accueil</a></div></div>`;
