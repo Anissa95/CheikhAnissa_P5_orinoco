@@ -75,7 +75,7 @@ function afficheFormulaire() {
 /// formulaire 
 //validation du formulaire et envoie en POST
 const commande = document.getElementById("commande");
-const regexName = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
+const regexName = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){3,40}$/;
 const regexCity = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){1,10}$/;
 const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
 const regexAddress = /^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$/;
@@ -98,7 +98,6 @@ function validationFormulaire() {
             (regexCity.test(contact.city) == true) &
             (regexAddress.test(contact.address) == true)
         ) {
-            event.preventDefault();
             //On ajoute les infos des produits a l'id de l'acheteur 
             let products = [];
             for (listId of caddie) {
@@ -134,6 +133,7 @@ function validationFormulaire() {
                 "Tous les champs du formulaire sont obligatoires!!!!."
             );
         }
+        event.preventDefault()
     });
 }
 // indique que le panier est vide
